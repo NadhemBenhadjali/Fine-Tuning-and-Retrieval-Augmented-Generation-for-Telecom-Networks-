@@ -1,6 +1,7 @@
 # Fine-Tuning-and-Retrieval-Augmented-Generation-for-Telecom-Networks-
 # Specializing Large Language Models for Telecom Networks
 
+
 This project is part of the Zindi competition: [Specializing Large Language Models for Telecom Networks](https://zindi.africa/competitions/specializing-large-language-models-for-telecom-networks). The goal is to finetune the PHI-2 language model using telecom documents to improve its performance on telecom-specific tasks.
 
 ## Files and Modules
@@ -31,3 +32,4 @@ This script focuses on setting up the retrieval-augmented generation (RAG) model
 To install the required packages, run:
 ```bash
 pip install -r requirements.txt
+(inspired from https://github.com/progin2037/specializing_llm_for_telecom_networks)
