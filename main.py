@@ -139,16 +139,16 @@ def main():
     if USE_REPO_MODEL:
         model_path = 'models/peft_phi_2_repo'
     elif USE_LOCAL_FINE_TUNED:
-        model_path = '/export/livia/home/vision/Mkdayem/MkdayemyoloN/models'
+        model_path = 'models'
     else:
         model_path = 'microsoft/phi-2'
 
     model, tokenizer = load_model(model_path)
 
-    train, labels, test = load_data('/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/TeleQnA_training.txt',
-                                    '/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/Q_A_ID_training.csv',
-                                    '/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/TeleQnA_testing1.txt',
-                                    '/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/questions_new.txt')
+    train, labels, test = load_data('data/TeleQnA_training.txt',
+                                    'data/Q_A_ID_training.csv',
+                                    'data/TeleQnA_testing1.txt',
+                                    'data/questions_new.txt')
 
     train, test = prepare_data(train, test)
 
@@ -156,7 +156,7 @@ def main():
     today_date = pd.to_datetime('today').strftime('%Y_%m_%d')
 
     if PERFORM_RAG:
-        vector_path = '/export/livia/home/vision/Mkdayem/MkdayemyoloN/rag3'
+        vector_path = 'rag3'
         query_engine, top_k = configure_rag(vector_path)
         if DO_TRAIN_INFERENCE:
             results_train = perform_inference(train, model, tokenizer, PERFORM_RAG, query_engine, top_k)
