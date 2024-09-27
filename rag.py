@@ -54,8 +54,8 @@ def create_empty_directory(directory):
         os.makedirs(directory)
 
 # Main Code
-DOCS_PATH = '/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/rel18'
-VECTOR_PATH = '/export/livia/home/vision/Mkdayem/MkdayemyoloN/rag2'
+DOCS_PATH = 'data/rel18'
+VECTOR_PATH = 'rag2'
 SAMPLE_DOCS = False
 RAG_INFERENCE = True
 
@@ -72,7 +72,7 @@ Settings.chunk_size = 128
 Settings.chunk_overlap = 20
 
 if SAMPLE_DOCS:
-    SAMPLED_DOCS_PATH = '/export/livia/home/vision/Mkdayem/MkdayemyoloN/rag2'
+    SAMPLED_DOCS_PATH = 'rag2'
     SAMPLE_FRAC = 0.5
     create_dir_with_sampled_docs(DOCS_PATH, SAMPLED_DOCS_PATH, SAMPLE_FRAC)
     documents = SimpleDirectoryReader(SAMPLED_DOCS_PATH).load_data()
@@ -89,7 +89,7 @@ if RAG_INFERENCE:
     retriever = VectorIndexRetriever(index=index, similarity_top_k=top_k)
     query_engine = RetrieverQueryEngine(retriever=retriever, node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=0.5)])
 
-    train = pd.read_json('/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/TeleQnA_training.txt').T
+    train = pd.read_json('data/TeleQnA_training.txt').T
     train['Question_ID'] = train.index.str.split(' ').str[-1]
     train = remove_release_number(train, 'question')
 
