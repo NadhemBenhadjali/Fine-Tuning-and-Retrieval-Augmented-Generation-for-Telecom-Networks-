@@ -95,15 +95,15 @@ def test_inference(train: pd.DataFrame, test_idx, model_final, tokenizer, labels
 
 # Main script execution
 MODEL_PATH = 'microsoft/phi-2'
-TUNED_MODEL_PATH = '/export/livia/home/vision/Mkdayem/MkdayemyoloN/models'
+TUNED_MODEL_PATH = 'models'
 USE_RAG = True
 
 model, tokenizer = load_model_and_tokenizer(MODEL_PATH)
 
-train, labels = prepare_data('/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/TeleQnA_training.txt',
-                             '/export/livia/home/vision/Mkdayem/MkdayemyoloN/data/Q_A_ID_training.csv')
+train, labels = prepare_data('data/TeleQnA_training.txt',
+                             'data/Q_A_ID_training.csv')
 
-train = add_context_to_data(train, '/export/livia/home/vision/Mkdayem/MkdayemyoloN/results/context_all_train3.pkl', USE_RAG)
+train = add_context_to_data(train, 'results/context_all_train3.pkl', USE_RAG)
 
 tokenized_dataset, test_idx = prepare_training_data(train)
 
